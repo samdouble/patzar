@@ -1,31 +1,30 @@
 use std::collections::HashMap;
-mod fenoption1;
-use fenoption1::FENOption1;
+mod fensetting1;
+use fensetting1::FENSetting1;
+mod fensetting2;
+use fensetting2::FENSetting2;
 
 pub struct FENParser {}
 
-lazy_static!{
-    static ref HASHMAP: HashMap<u32, &'static str> = {
-        let mut m = HashMap::new();
-        m.insert(0, "foo");
-        m.insert(1, "bar");
-        m.insert(2, "baz");
-        m
-    };
-}
-
 impl FENParser {
     pub fn validate(fen_string: &'static str) -> bool {
-        let mut options = fen_string.split(" ");
+        let mut settings = fen_string.split(" ");
 
-        for (i, option) in options.enumerate() {
-            let setting_valid = FENOption1::validate(option);
-            println!("{} {}", i, setting_valid);
+        for (i, setting) in settings.enumerate() {
+            let setting_valid = match i {
+                0 => FENSetting1::validate(setting),
+                1 => FENSetting2::validate(setting),
+                2 => FENSetting3::validate(setting),
+                3 => FENSetting4::validate(setting),
+                4 => FENSetting5::validate(setting),
+                5 => FENSetting6::validate(setting),
+                _ => false,
+            };
+            if (!setting_valid) {
+                return false;
+            }
         };
-        for (k, v) in HASHMAP.iter() {
-            println!("{:?}: {:?}", k, v);
-        }
-        false
+        true
     }
 }
 

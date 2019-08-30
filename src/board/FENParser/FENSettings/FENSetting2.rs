@@ -14,24 +14,24 @@ mod tests {
     #[test]
     fn validate_white() {
         let valid = FENSetting2::validate("w");
-        assert_eq!(valid, true);
+        assert!(valid);
     }
 
     #[test]
     fn validate_black() {
         let valid = FENSetting2::validate("b");
-        assert_eq!(valid, true);
+        assert!(valid);
     }
 
     #[test]
     fn invalidate_wb() {
         let valid = FENSetting2::validate("wb");
-        assert_eq!(valid, false);
+        assert!(!valid);
     }
 
     #[test]
     fn invalidate_space() {
         let valid = FENSetting2::validate(" ");
-        assert_eq!(valid, false);
+        assert!(!valid);
     }
 }

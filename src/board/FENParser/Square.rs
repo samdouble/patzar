@@ -1,11 +1,34 @@
 use regex::Regex;
 
-pub struct Square {}
+pub struct Square {
+    row: u8,
+    col: char,
+}
 
 impl Square {
+    pub fn new(fen_position: &'static str) -> Self {
+        if (!Self::validate(fen_position)) {
+            panic!("Invalid square position: {}", fen_position);
+        }
+        Self {
+            row: fen_position
+                .chars().nth(1).unwrap().to_string()
+                .parse::<u8>().unwrap(),
+            col: fen_position.chars().nth(0).unwrap(),
+        }
+    }
+
     pub fn validate(setting: &'static str) -> bool {
         let square_regex: Regex = Regex::new(r"^[a-h][1-8]$").unwrap();
         square_regex.is_match(setting)
+    }
+
+    pub fn get_row(&self) -> u8 {
+        self.row
+    }
+
+    pub fn get_col(&self) -> char {
+        self.col
     }
 }
 

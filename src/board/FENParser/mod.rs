@@ -2,9 +2,10 @@ mod FENSettings;
 use FENSettings::FENSetting1::*;
 use FENSettings::FENSetting2::*;
 use FENSettings::FENSetting3::*;
-/*use FENSettings::FENSetting4;
-use FENSettings::FENSetting5;
-use FENSettings::FENSetting6;*/
+use FENSettings::FENSetting4::*;
+use FENSettings::FENSetting5::*;
+use FENSettings::FENSetting6::*;
+pub mod Square;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';
@@ -21,9 +22,9 @@ impl FENParser {
                 0 => FENSetting1::validate(setting),
                 1 => FENSetting2::validate(setting),
                 2 => FENSetting3::validate(setting),
-                /*3 => FENSetting4::validate(setting),
+                3 => FENSetting4::validate(setting),
                 4 => FENSetting5::validate(setting),
-                5 => FENSetting6::validate(setting),*/
+                5 => FENSetting6::validate(setting),
                 _ => false,
             };
             if !setting_valid {

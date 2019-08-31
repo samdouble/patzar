@@ -1,6 +1,6 @@
-pub struct FENSetting3 {}
-
 const NO_POSSIBLE_CASTLING: char = '-';
+
+pub struct FENSetting3 {}
 
 // Third setting: castling options
 impl FENSetting3 {

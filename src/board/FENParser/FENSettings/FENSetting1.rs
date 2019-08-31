@@ -6,7 +6,7 @@ pub struct FENSetting1 {}
 // First setting: position of every piece on the board
 impl FENSetting1 {
     pub fn validate(setting: &'static str) -> bool {
-        let mut lines = setting.split(LINES_SEPARATOR);
+        let lines = setting.split(LINES_SEPARATOR);
 
         let mut lines_count = 0;
         for (i, line) in lines.enumerate() {

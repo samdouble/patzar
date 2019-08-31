@@ -5,7 +5,7 @@ impl FENSetting6 {
     pub fn validate(setting: &'static str) -> bool {
         match setting.parse::<u32>() {
             Ok(num_moves) => num_moves >= 1,
-            Err(e) => false, 
+            Err(_e) => false, 
         }
     }
 }

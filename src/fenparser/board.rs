@@ -1,4 +1,4 @@
-use super::Row::*;
+use super::row::*;
 
 const NUMBER_OF_ROWS: u8 = 8;
 const ROWS_SEPARATOR: char = '/';
@@ -10,7 +10,7 @@ impl Board {
         let rows = fen_board.split(ROWS_SEPARATOR);
 
         let mut rows_count = 0;
-        for (i, row) in rows.enumerate() {
+        for (_i, row) in rows.enumerate() {
             if !Row::validate(row) {
                 return false;
             }

@@ -1,15 +1,15 @@
-mod FENSettings;
-use FENSettings::FENSetting1::*;
-use FENSettings::FENSetting2::*;
-use FENSettings::FENSetting3::*;
-use FENSettings::FENSetting4::*;
-use FENSettings::FENSetting5::*;
-use FENSettings::FENSetting6::*;
-pub mod Game;
-pub mod Board;
-pub mod Row;
-pub mod Square;
-pub mod Piece;
+mod fensettings;
+use fensettings::fensetting1::*;
+use fensettings::fensetting2::*;
+use fensettings::fensetting3::*;
+use fensettings::fensetting4::*;
+use fensettings::fensetting5::*;
+use fensettings::fensetting6::*;
+pub mod game;
+pub mod board;
+pub mod row;
+pub mod square;
+pub mod piece;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';
@@ -46,7 +46,7 @@ impl FENParser {
 #[cfg(test)]
 mod tests {
     use super::FENParser;
-    use super::Game::*;
+    use super::game::Game;
 
     #[test]
     fn initial_configuration_is_valid() {

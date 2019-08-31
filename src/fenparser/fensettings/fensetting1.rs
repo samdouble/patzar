@@ -1,4 +1,4 @@
-use super::super::Board::*;
+use super::super::board::*;
 
 pub struct FENSetting1 {}
 

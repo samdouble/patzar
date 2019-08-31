@@ -1,4 +1,4 @@
-use super::Piece::*;
+use super::piece::*;
 
 pub struct Row {}
 

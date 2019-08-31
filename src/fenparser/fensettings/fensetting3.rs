@@ -31,14 +31,14 @@ mod tests {
     }
 
     #[test]
-    fn validate_KQkq() {
+    fn validate_all_castling_options_in_usual_order() {
         let valid = FENSetting3::validate("KQkq");
         assert!(valid);
     }
 
 
     #[test]
-    fn validate_Q() {
+    fn validate_only_one_castling_option() {
         let valid = FENSetting3::validate("Q");
         assert!(valid);
     }
@@ -50,19 +50,19 @@ mod tests {
     }
 
     #[test]
-    fn validate_qKkQ() {
+    fn validate_all_castling_options_in_unusual_order() {
         let valid = FENSetting3::validate("qKkQ");
         assert!(valid);
     }
 
     #[test]
-    fn invalidate_qKkQK() {
+    fn invalidate_one_castling_option_repeated_twice() {
         let valid = FENSetting3::validate("qKkQK");
         assert!(!valid);
     }
 
     #[test]
-    fn invalidate_qKkQKq() {
+    fn invalidate_one_castling_option_repeated_thrice() {
         let valid = FENSetting3::validate("qKkQKq");
         assert!(!valid);
     }

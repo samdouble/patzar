@@ -4,8 +4,8 @@ pub struct FENSetting5 {}
 impl FENSetting5 {
     pub fn validate(setting: &'static str) -> bool {
         match setting.parse::<u32>() {
-            Ok(num_moves) => true,
-            Err(e) => false, 
+            Ok(_num_moves) => true,
+            Err(_e) => false, 
         }
     }
 }

@@ -1,4 +1,4 @@
-use super::super::Square::*;
+use super::super::square::*;
 
 const NO_ENPASSANT: char = '-';
 

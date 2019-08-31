@@ -5,8 +5,11 @@ use FENSettings::FENSetting3::*;
 use FENSettings::FENSetting4::*;
 use FENSettings::FENSetting5::*;
 use FENSettings::FENSetting6::*;
+pub mod Game;
 pub mod Board;
+pub mod Row;
 pub mod Square;
+pub mod Piece;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';
@@ -15,7 +18,7 @@ pub struct FENParser {}
 
 impl FENParser {
     pub fn validate(fen_string: &'static str) -> bool {
-        let mut settings = fen_string.split(SETTINGS_SEPARATOR);
+        let settings = fen_string.split(SETTINGS_SEPARATOR);
 
         let mut settings_count = 0;
         for (i, setting) in settings.enumerate() {
@@ -43,9 +46,11 @@ impl FENParser {
 #[cfg(test)]
 mod tests {
     use super::FENParser;
+    use super::Game::*;
 
-    /*#[test]
-    fn validate() {
-        assert_eq!(FENParser::validate("eav fbe"), false);
-    }*/
+    #[test]
+    fn initial_configuration_is_valid() {
+        let initial_configuration: &'static str = Game::get_initial_configuration();
+        assert!(FENParser::validate(initial_configuration));
+    }
 }

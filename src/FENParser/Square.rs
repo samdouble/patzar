@@ -7,7 +7,7 @@ pub struct Square {
 
 impl Square {
     pub fn new(fen_position: &'static str) -> Self {
-        if (!Self::validate(fen_position)) {
+        if !Self::validate(fen_position) {
             panic!("Invalid square position: {}", fen_position);
         }
         Self {

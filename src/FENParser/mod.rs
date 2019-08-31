@@ -5,6 +5,7 @@ use FENSettings::FENSetting3::*;
 use FENSettings::FENSetting4::*;
 use FENSettings::FENSetting5::*;
 use FENSettings::FENSetting6::*;
+pub mod Board;
 pub mod Square;
 
 const NUMBER_OF_SETTINGS: u8 = 6;

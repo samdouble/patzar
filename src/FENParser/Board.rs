@@ -1,4 +1,5 @@
-use super::FENParser::FENParser;
+const NUMBER_OF_ROWS: u8 = 8;
+const ROWS_SEPARATOR: char = '/';
 
 pub struct Board {}
 
@@ -7,8 +8,21 @@ impl Board {
         "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
     }
 
-    pub fn validate(fen_string: &'static str) -> bool {
-        FENParser::validate(fen_string)
+    pub fn validate(fen_board: &'static str) -> bool {
+        let rows = fen_board.split(ROWS_SEPARATOR);
+
+        let mut rows_count = 0;
+        for (i, row) in rows.enumerate() {
+            let squares: Vec<char> = row.chars().collect();
+            for square in squares {
+                println!("{}", square);
+            }
+            rows_count += 1;
+        };
+        if rows_count != NUMBER_OF_ROWS {
+            return false;
+        }
+        true
     }
 }
 

@@ -10,7 +10,7 @@ impl FENSetting4 {
         if setting == NO_ENPASSANT.to_string() {
             return true;
         }
-        if (!Square::validate(setting)) {
+        if !Square::validate(setting) {
             return false;
         }
         // Because "en-passant" can only be realized on a pawn that has

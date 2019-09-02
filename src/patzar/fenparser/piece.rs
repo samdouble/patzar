@@ -49,6 +49,7 @@ impl FromStr for Piece {
 
 #[cfg(test)]
 mod tests {
+    // TODO tests
     /*use crate::patzar::fenparser::validatable::Validatable;
     use super::Piece;
 

@@ -15,7 +15,7 @@ impl Validatable for Board {
             if !Row::validate(row) {
                 return false;
             }
-            // ...
+            // TODO more conditions ...
             rows_count += 1;
         };
         if rows_count != NUMBER_OF_ROWS {
@@ -35,4 +35,6 @@ mod tests {
         let valid = Board::validate("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
         assert!(valid);
     }
+
+    // TODO more tests
 }

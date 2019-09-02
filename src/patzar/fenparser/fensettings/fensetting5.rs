@@ -1,8 +1,10 @@
+use crate::patzar::fenparser::validatable::Validatable;
+
 pub struct FENSetting5 {}
 
 // Fifth setting: half-move counter
-impl FENSetting5 {
-    pub fn validate(setting: &'static str) -> bool {
+impl Validatable for FENSetting5 {
+    fn validate(setting: &str) -> bool {
         match setting.parse::<u32>() {
             Ok(_num_moves) => true,
             Err(_e) => false, 
@@ -12,6 +14,7 @@ impl FENSetting5 {
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
     use super::FENSetting5;
 
     #[test]

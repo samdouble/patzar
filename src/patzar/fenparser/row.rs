@@ -1,11 +1,12 @@
-use super::piece::*;
+use crate::patzar::fenparser::validatable::Validatable;
+use super::piece::Piece;
 
 pub struct Row {}
 
 const NUMBER_OF_COLS: u8 = 8;
 
-impl Row {
-    pub fn validate(fen_row: &'static str) -> bool {
+impl Validatable for Row {
+    fn validate(fen_row: &str) -> bool {
         let squares: Vec<char> = fen_row.chars().collect();
         let mut squares_in_row_count: u8 = 0;
         for square in squares {

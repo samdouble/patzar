@@ -1,8 +1,10 @@
+use crate::patzar::fenparser::validatable::Validatable;
+
 pub struct FENSetting6 {}
 
 // Sixth setting: number of full moves
-impl FENSetting6 {
-    pub fn validate(setting: &'static str) -> bool {
+impl Validatable for FENSetting6 {
+    fn validate(setting: &str) -> bool {
         match setting.parse::<u32>() {
             Ok(num_moves) => num_moves >= 1,
             Err(_e) => false, 
@@ -12,6 +14,7 @@ impl FENSetting6 {
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
     use super::FENSetting6;
 
     #[test]

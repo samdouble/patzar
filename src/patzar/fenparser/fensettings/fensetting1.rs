@@ -1,16 +1,18 @@
-use super::super::board::*;
+use crate::patzar::fenparser::validatable::Validatable;
+use super::super::board::Board;
 
 pub struct FENSetting1 {}
 
 // First setting: position of every piece on the board
-impl FENSetting1 {
-    pub fn validate(setting: &'static str) -> bool {
+impl Validatable for FENSetting1 {
+    fn validate(setting: &str) -> bool {
         Board::validate(setting)
     }
 }
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
     use super::FENSetting1;
 
     #[test]

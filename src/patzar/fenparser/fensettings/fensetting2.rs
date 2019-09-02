@@ -1,14 +1,17 @@
+use crate::patzar::fenparser::validatable::Validatable;
+
 pub struct FENSetting2 {}
 
 // Second setting: next player to move
-impl FENSetting2 {
-    pub fn validate(setting: &'static str) -> bool {
+impl Validatable for FENSetting2 {
+    fn validate(setting: &str) -> bool {
         setting == "w" || setting == "b"
     }
 }
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
     use super::FENSetting2;
 
     #[test]

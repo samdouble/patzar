@@ -1,23 +1,24 @@
+use crate::patzar::fenparser::validatable::Validatable;
 mod fensettings;
-use fensettings::fensetting1::*;
-use fensettings::fensetting2::*;
-use fensettings::fensetting3::*;
-use fensettings::fensetting4::*;
-use fensettings::fensetting5::*;
-use fensettings::fensetting6::*;
-pub mod game;
+use fensettings::fensetting1::FENSetting1;
+use fensettings::fensetting2::FENSetting2;
+use fensettings::fensetting3::FENSetting3;
+use fensettings::fensetting4::FENSetting4;
+use fensettings::fensetting5::FENSetting5;
+use fensettings::fensetting6::FENSetting6;
 pub mod board;
 pub mod row;
 pub mod square;
 pub mod piece;
+pub mod validatable;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';
 
 pub struct FENParser {}
 
-impl FENParser {
-    pub fn validate(fen_string: &'static str) -> bool {
+impl Validatable for FENParser {
+    fn validate(fen_string: &str) -> bool {
         let settings = fen_string.split(SETTINGS_SEPARATOR);
 
         let mut settings_count = 0;
@@ -45,8 +46,9 @@ impl FENParser {
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
+    use crate::patzar::game::Game;
     use super::FENParser;
-    use super::game::Game;
 
     #[test]
     fn initial_configuration_is_valid() {

@@ -1,12 +1,13 @@
-use super::row::*;
+use crate::patzar::fenparser::validatable::Validatable;
+use super::row::Row;
 
 const NUMBER_OF_ROWS: u8 = 8;
 const ROWS_SEPARATOR: char = '/';
 
 pub struct Board {}
 
-impl Board {
-    pub fn validate(fen_board: &'static str) -> bool {
+impl Validatable for Board {
+    fn validate(fen_board: &str) -> bool {
         let rows = fen_board.split(ROWS_SEPARATOR);
 
         let mut rows_count = 0;
@@ -26,8 +27,9 @@ impl Board {
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
     use super::Board;
-
+    
     #[test]
     fn initial_configuration_is_valid() {
         let valid = Board::validate("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");

@@ -1,4 +1,5 @@
 use regex::Regex;
+use crate::patzar::fenparser::validatable::Validatable;
 
 pub struct Square {
     row: u8,
@@ -6,7 +7,7 @@ pub struct Square {
 }
 
 impl Square {
-    pub fn new(fen_position: &'static str) -> Self {
+    pub fn new(fen_position: &str) -> Self {
         if !Self::validate(fen_position) {
             panic!("Invalid square position: {}", fen_position);
         }
@@ -18,23 +19,22 @@ impl Square {
         }
     }
 
-    pub fn validate(setting: &'static str) -> bool {
-        let square_regex: Regex = Regex::new(r"^[a-h][1-8]$").unwrap();
-        square_regex.is_match(setting)
-    }
-
     pub fn get_row(&self) -> u8 {
         self.row
     }
+}
 
-    pub fn get_col(&self) -> char {
-        self.col
+impl Validatable for Square {
+    fn validate(setting: &str) -> bool {
+        let square_regex: Regex = Regex::new(r"^[a-h][1-8]$").unwrap();
+        square_regex.is_match(setting)
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::Square;
+    use crate::patzar::fenparser::validatable::Validatable;
 
     #[test]
     fn validate_a1() {

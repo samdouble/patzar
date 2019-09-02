@@ -1,4 +1,5 @@
 use core::str::FromStr;
+use crate::patzar::fenparser::validatable::Validatable;
 
 pub enum Piece {
     WhiteKing,
@@ -15,9 +16,9 @@ pub enum Piece {
     BlackPawn,
 }
 
-impl Piece {
-    pub fn validate(fen_piece: &str) -> bool {
-        match fen_piece.parse::<Piece>() {
+impl Validatable for Piece {
+    fn validate(fen_piece: &str) -> bool {
+        match fen_piece.parse::<Self>() {
             Ok(_piece) => true,
             Err(_e) => false,
         }
@@ -44,4 +45,16 @@ impl FromStr for Piece {
             _ => Err(()),
         }
     }
+}
+
+#[cfg(test)]
+mod tests {
+    /*use crate::patzar::fenparser::validatable::Validatable;
+    use super::Piece;
+
+    #[test]
+    fn validate_white_king() {
+        let valid = Piece::validate();
+        //assert_eq!(initial_configuration, "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    }*/
 }

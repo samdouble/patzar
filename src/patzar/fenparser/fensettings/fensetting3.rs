@@ -1,10 +1,12 @@
+use crate::patzar::fenparser::validatable::Validatable;
+
 const NO_POSSIBLE_CASTLING: char = '-';
 
 pub struct FENSetting3 {}
 
 // Third setting: castling options
-impl FENSetting3 {
-    pub fn validate(setting: &'static str) -> bool {
+impl Validatable for FENSetting3 {
+    fn validate(setting: &str) -> bool {
         if setting == NO_POSSIBLE_CASTLING.to_string() {
             return true;
         }
@@ -22,6 +24,7 @@ impl FENSetting3 {
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
     use super::FENSetting3;
 
     #[test]

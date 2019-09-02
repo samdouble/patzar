@@ -1,12 +1,13 @@
-use super::super::square::*;
+use crate::patzar::fenparser::validatable::Validatable;
+use super::super::square::Square;
 
 const NO_ENPASSANT: char = '-';
 
 pub struct FENSetting4 {}
 
 // Fourth setting: en passant
-impl FENSetting4 {
-    pub fn validate(setting: &'static str) -> bool {
+impl Validatable for FENSetting4 {
+    fn validate(setting: &str) -> bool {
         if setting == NO_ENPASSANT.to_string() {
             return true;
         }
@@ -25,6 +26,7 @@ impl FENSetting4 {
 
 #[cfg(test)]
 mod tests {
+    use crate::patzar::fenparser::validatable::Validatable;
     use super::FENSetting4;
 
     #[test]

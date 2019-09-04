@@ -1,11 +1,11 @@
 use super::Color;
 
 #[derive(Debug)]
-pub struct Rook {
+pub struct Bishop {
     color: Color,
 }
 
-impl Rook {
+impl Bishop {
     pub fn new(color: Color) -> Self {
         Self {
             color,

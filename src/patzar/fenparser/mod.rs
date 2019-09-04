@@ -10,6 +10,8 @@ pub mod board;
 pub mod row;
 pub mod square;
 pub mod piece;
+pub mod pieces;
+pub mod fenparsable;
 pub mod validatable;
 
 const NUMBER_OF_SETTINGS: u8 = 6;

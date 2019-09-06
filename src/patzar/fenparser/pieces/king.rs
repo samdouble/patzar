@@ -1,3 +1,4 @@
+use std::cmp::PartialEq;
 use super::Color;
 
 #[derive(Debug)]
@@ -10,5 +11,11 @@ impl King {
         Self {
             color,
         }
+    }
+}
+
+impl PartialEq for King {
+    fn eq(&self, other: &Self) -> bool {
+        self.color == other.color
     }
 }

@@ -56,4 +56,6 @@ mod tests {
         let initial_configuration: &'static str = Game::get_initial_configuration();
         assert!(FENParser::validate(initial_configuration));
     }
+
+    // TODO more tests
 }

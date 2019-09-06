@@ -12,3 +12,9 @@ impl Queen {
         }
     }
 }
+
+impl PartialEq for Queen {
+    fn eq(&self, other: &Self) -> bool {
+        self.color == other.color
+    }
+}

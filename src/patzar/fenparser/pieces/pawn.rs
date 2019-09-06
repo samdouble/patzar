@@ -12,3 +12,9 @@ impl Pawn {
         }
     }
 }
+
+impl PartialEq for Pawn {
+    fn eq(&self, other: &Self) -> bool {
+        self.color == other.color
+    }
+}

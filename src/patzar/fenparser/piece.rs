@@ -40,9 +40,15 @@ impl FENParsable<Self> for Piece {
 
 impl PartialEq for Piece {
     fn eq(&self, other: &Self) -> bool {
-        // TODO
-        println!("{:#?}", self);
-        false
+        match (self, other) {
+            (Piece::King(k1), Piece::King(k2)) => k1 == k2,
+            (Piece::Queen(q1), Piece::Queen(q2)) => q1 == q2,
+            (Piece::Rook(r1), Piece::Rook(r2)) => r1 == r2,
+            (Piece::Bishop(b1), Piece::Bishop(b2)) => b1 == b2,
+            (Piece::Knight(n1), Piece::Knight(n2)) => n1 == n2,
+            (Piece::Pawn(p1), Piece::Pawn(p2)) => p1 == p2,
+            _ => false,
+        }
     }
 }
 

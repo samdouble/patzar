@@ -12,3 +12,9 @@ impl Bishop {
         }
     }
 }
+
+impl PartialEq for Bishop {
+    fn eq(&self, other: &Self) -> bool {
+        self.color == other.color
+    }
+}

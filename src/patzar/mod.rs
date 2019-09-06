@@ -17,6 +17,8 @@ impl Patzar {
 }
 
 /*
+TODO Tests
+
 FEN/EPD support
 GetInitialBoard() -> fenString
 Validate(fenString) -> bool

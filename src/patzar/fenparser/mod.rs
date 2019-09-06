@@ -7,7 +7,6 @@ use fensettings::fensetting4::FENSetting4;
 use fensettings::fensetting5::FENSetting5;
 use fensettings::fensetting6::FENSetting6;
 pub mod board;
-pub mod row;
 pub mod square;
 pub mod piece;
 pub mod pieces;

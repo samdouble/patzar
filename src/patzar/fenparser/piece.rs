@@ -41,7 +41,8 @@ impl FENParsable<Self> for Piece {
 impl PartialEq for Piece {
     fn eq(&self, other: &Self) -> bool {
         // TODO
-        true
+        println!("{:#?}", self);
+        false
     }
 }
 

@@ -1,3 +1,4 @@
+use crate::patzar::fenparser::fenparsable::FENParsable;
 use crate::patzar::fenparser::validatable::Validatable;
 use super::super::square::Square;
 
@@ -11,16 +12,16 @@ impl Validatable for FENSetting4 {
         if setting == NO_ENPASSANT.to_string() {
             return true;
         }
-        if !Square::validate(setting) {
-            return false;
-        }
+        let square = match Square::from_FEN_string(setting) {
+            Ok(square) => square,
+            Err(_err) => return false,
+        };
         // Because "en-passant" can only be realized on a pawn that has
         // moved 2 squares from its starting position (rows 2 and 7), it is possible
         // to be a little more specific than just validating that it is a valid square
         // string by checking that the row number is either 3 or 6.
-        let square: Square = Square::new(setting);
-        let square_row: u8 = square.get_row();
-        square_row == 3 || square_row == 6
+        let square_row: usize = square.get_row();
+        square_row == 2 || square_row == 5
     }
 }
 

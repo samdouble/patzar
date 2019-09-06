@@ -1,3 +1,4 @@
+use crate::patzar::fenparser::fenparsable::FENParsable;
 use crate::patzar::fenparser::validatable::Validatable;
 use super::super::board::Board;
 
@@ -6,7 +7,10 @@ pub struct FENSetting1 {}
 // First setting: position of every piece on the board
 impl Validatable for FENSetting1 {
     fn validate(setting: &str) -> bool {
-        Board::validate(setting)
+        match Board::from_FEN_string(setting) {
+            Ok(_board) => true,
+            Err(_err) => false,
+        }
     }
 }
 

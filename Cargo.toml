@@ -5,3 +5,5 @@ authors = ["samdouble <samleafs@protonmail.com>"]
 edition = "2018"
 
 [dependencies]
+lazy_static = "1.4.0"
+regex = "1"

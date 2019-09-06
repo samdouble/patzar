@@ -1,0 +1,3 @@
+trait StraightMove {
+    fn move() -> 
+}

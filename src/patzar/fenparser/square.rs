@@ -1,13 +1,11 @@
 use std::cmp::PartialEq;
 use regex::Regex;
 use crate::patzar::fenparser::fenparsable::FENParsable;
-use super::piece::Piece;
 
 #[derive(Debug)]
 pub struct Square {
     row: usize,
     col: usize,
-    piece: Option<Piece>,
 }
 
 impl Square {
@@ -15,12 +13,7 @@ impl Square {
         Self {
             row,
             col,
-            piece: None,
         }
-    }
-
-    pub fn assign_piece(&mut self, piece: Piece) {
-        self.piece = Some(piece);
     }
 
     pub fn get_row(&self) -> usize {

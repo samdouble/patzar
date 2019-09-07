@@ -1,37 +1,51 @@
 use crate::patzar::fenparser::fenparsable::FENParsable;
 use super::piece::Piece;
 use super::square::Square;
+use super::pieces::Color;
+use super::pieces::King;
+use super::pieces::Queen;
+use super::pieces::Rook;
+use super::pieces::Bishop;
+use super::pieces::Knight;
+use super::pieces::Pawn;
 
 const NUMBER_OF_ROWS: usize = 8;
 const NUMBER_OF_COLS: usize = 8;
 const ROWS_SEPARATOR: char = '/';
 
-pub type Board = Vec<Vec<Square>>;
+pub type Board = Vec<Piece>;
 
 impl FENParsable<Self> for Board {
     fn from_FEN_string(fen_string: &str) -> Result<Self, ()> {
-        let mut vec_rows: Self = Vec::new();
+        let mut vec_pieces: Self = Vec::new();
         let mut row_number = 0;
         for row in fen_string.split(ROWS_SEPARATOR) {
             let squares: Vec<char> = row.chars().collect();
-            let mut vec_squares: Vec<Square> = Vec::new();
             let mut col_number = 0;
             for square in squares {
-                let square = square.to_string();
-                match square.parse::<usize>() {
-                    Ok(num_squares) => {
-                        for _ in 0..num_squares {
-                            vec_squares.push(Square::new(row_number, col_number));
-                            col_number += 1;
-                        }
-                    },
+                match square.to_string().parse::<usize>() {
+                    Ok(num_squares) => col_number += num_squares,
                     Err(_err) => {
-                        match Piece::from_FEN_string(&square) {
+                        let position = Square::new(row_number, col_number);
+                        let piece = match &square {
+                            'K' => Ok(Piece::King(King::new(Color::White, position))),
+                            'k' => Ok(Piece::King(King::new(Color::Black, position))),
+                            'Q' => Ok(Piece::Queen(Queen::new(Color::White, position))),
+                            'q' => Ok(Piece::Queen(Queen::new(Color::Black, position))),
+                            'R' => Ok(Piece::Rook(Rook::new(Color::White, position))),
+                            'r' => Ok(Piece::Rook(Rook::new(Color::Black, position))),
+                            'B' => Ok(Piece::Bishop(Bishop::new(Color::White, position))),
+                            'b' => Ok(Piece::Bishop(Bishop::new(Color::Black, position))),
+                            'N' => Ok(Piece::Knight(Knight::new(Color::White, position))),
+                            'n' => Ok(Piece::Knight(Knight::new(Color::Black, position))),
+                            'P' => Ok(Piece::Pawn(Pawn::new(Color::White, position))),
+                            'p' => Ok(Piece::Pawn(Pawn::new(Color::Black, position))),
+                            _ => Err(()),
+                        };
+                        match piece {
                             Ok(piece) => {
-                                let mut square = Square::new(row_number, col_number);
-                                square.assign_piece(piece);
+                                vec_pieces.push(piece);
                                 col_number += 1;
-                                vec_squares.push(square);
                             },
                             Err(_err) => return Err(()),
                         }
@@ -42,13 +56,12 @@ impl FENParsable<Self> for Board {
                 return Err(());
             }
             // TODO more conditions ...
-            vec_rows.push(vec_squares);
             row_number += 1;
         };
         if row_number != NUMBER_OF_ROWS {
             return Err(());
         }
-        Ok(vec_rows)
+        Ok(vec_pieces)
     }
 }
 

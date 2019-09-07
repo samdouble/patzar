@@ -1,4 +1,3 @@
-use crate::patzar::fenparser::validatable::Validatable;
 mod fensettings;
 use fensettings::fensetting1::FENSetting1;
 use fensettings::fensetting2::FENSetting2;
@@ -10,11 +9,14 @@ mod board;
 pub use board::Board;
 mod movex;
 pub use movex::Move;
-pub mod square;
+mod square;
+pub use square::Square;
 pub mod piece;
 pub mod pieces;
-pub mod fenparsable;
-pub mod validatable;
+mod fenparsable;
+pub use fenparsable::FENParsable;
+mod validatable;
+pub use validatable::Validatable;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';

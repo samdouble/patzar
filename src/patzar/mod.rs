@@ -1,4 +1,4 @@
-use crate::patzar::fenparser::validatable::Validatable;
+use crate::patzar::fenparser::Validatable;
 mod fenparser;
 use fenparser::FENParser;
 mod game;

@@ -1,4 +1,4 @@
-use crate::patzar::fenparser::fenparsable::FENParsable;
+use crate::patzar::fenparser::FENParsable;
 use super::fenparser::Board;
 use super::fenparser::Move;
 

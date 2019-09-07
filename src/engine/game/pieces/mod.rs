@@ -1,5 +1,3 @@
-mod color;
-pub use color::Color;
 mod king;
 pub use king::King;
 mod queen;

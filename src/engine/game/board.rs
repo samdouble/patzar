@@ -1,13 +1,13 @@
-use crate::patzar::fenparser::fenparsable::FENParsable;
-use super::piece::Piece;
-use super::square::Square;
-use super::pieces::Color;
-use super::pieces::King;
-use super::pieces::Queen;
-use super::pieces::Rook;
-use super::pieces::Bishop;
-use super::pieces::Knight;
-use super::pieces::Pawn;
+use crate::engine::fenparser::FENParsable;
+use crate::engine::game::Piece;
+use crate::engine::game::Square;
+use crate::engine::game::Color;
+use crate::engine::game::pieces::King;
+use crate::engine::game::pieces::Queen;
+use crate::engine::game::pieces::Rook;
+use crate::engine::game::pieces::Bishop;
+use crate::engine::game::pieces::Knight;
+use crate::engine::game::pieces::Pawn;
 
 const NUMBER_OF_ROWS: usize = 8;
 const NUMBER_OF_COLS: usize = 8;

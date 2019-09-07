@@ -1,6 +1,6 @@
 use std::cmp::PartialEq;
 use regex::Regex;
-use crate::patzar::fenparser::fenparsable::FENParsable;
+use crate::engine::fenparser::FENParsable;
 
 #[derive(Debug)]
 pub struct Square {
@@ -55,8 +55,8 @@ impl PartialEq for Square {
 
 #[cfg(test)]
 mod tests {
-    use crate::patzar::fenparser::fenparsable::FENParsable;
-    use super::Square;
+    use crate::engine::fenparser::FENParsable;
+    use crate::engine::game::Square;
 
     #[test]
     fn validate_a1() {

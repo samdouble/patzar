@@ -1,13 +1,13 @@
-use crate::patzar::fenparser::Square;
-use super::Color;
+use crate::engine::game::Color;
+use crate::engine::game::Square;
 
 #[derive(Debug)]
-pub struct Rook {
+pub struct Pawn {
     color: Color,
     square: Square,
 }
 
-impl Rook {
+impl Pawn {
     pub fn new(color: Color, square: Square) -> Self {
         Self {
             color,
@@ -16,7 +16,7 @@ impl Rook {
     }
 }
 
-impl PartialEq for Rook {
+impl PartialEq for Pawn {
     fn eq(&self, other: &Self) -> bool {
         self.square == other.square
     }

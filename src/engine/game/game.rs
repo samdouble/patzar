@@ -1,6 +1,6 @@
-use crate::patzar::fenparser::FENParsable;
-use super::fenparser::Board;
-use super::fenparser::Move;
+use crate::engine::fenparser::FENParsable;
+use crate::engine::game::Board;
+use crate::engine::game::Move;
 
 pub struct Game {}
 

@@ -1,22 +1,10 @@
-mod fensettings;
-use fensettings::fensetting1::FENSetting1;
-use fensettings::fensetting2::FENSetting2;
-use fensettings::fensetting3::FENSetting3;
-use fensettings::fensetting4::FENSetting4;
-use fensettings::fensetting5::FENSetting5;
-use fensettings::fensetting6::FENSetting6;
-mod board;
-pub use board::Board;
-mod movex;
-pub use movex::Move;
-mod square;
-pub use square::Square;
-pub mod piece;
-pub mod pieces;
-mod fenparsable;
-pub use fenparsable::FENParsable;
-mod validatable;
-pub use validatable::Validatable;
+use crate::engine::fenparser::fensettings::FENSetting1;
+use crate::engine::fenparser::fensettings::FENSetting2;
+use crate::engine::fenparser::fensettings::FENSetting3;
+use crate::engine::fenparser::fensettings::FENSetting4;
+use crate::engine::fenparser::fensettings::FENSetting5;
+use crate::engine::fenparser::fensettings::FENSetting6;
+use crate::engine::game::Validatable;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';
@@ -52,9 +40,9 @@ impl Validatable for FENParser {
 
 #[cfg(test)]
 mod tests {
-    use crate::patzar::fenparser::validatable::Validatable;
-    use crate::patzar::game::Game;
-    use super::FENParser;
+    use crate::engine::fenparser::FENParser;
+    use crate::engine::game::Game;
+    use crate::engine::game::Validatable;
 
     #[test]
     fn initial_configuration_is_valid() {

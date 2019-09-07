@@ -1,8 +1,6 @@
-use crate::patzar::fenparser::Validatable;
-mod fenparser;
-use fenparser::FENParser;
-mod game;
-use game::Game;
+use crate::engine::fenparser::FENParser;
+use crate::engine::game::Game;
+use crate::engine::game::Validatable;
 
 pub struct Patzar {}
 
@@ -19,7 +17,6 @@ impl Patzar {
         Game::get_available_moves(fen_string)
     }
 }
-
 /*
 TODO Tests
 

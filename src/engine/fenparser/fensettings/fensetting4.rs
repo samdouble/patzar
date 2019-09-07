@@ -1,6 +1,6 @@
-use crate::patzar::fenparser::fenparsable::FENParsable;
-use crate::patzar::fenparser::validatable::Validatable;
-use super::super::square::Square;
+use crate::engine::fenparser::FENParsable;
+use crate::engine::game::Validatable;
+use crate::engine::game::Square;
 
 const NO_ENPASSANT: char = '-';
 
@@ -27,8 +27,8 @@ impl Validatable for FENSetting4 {
 
 #[cfg(test)]
 mod tests {
-    use crate::patzar::fenparser::validatable::Validatable;
-    use super::FENSetting4;
+    use crate::engine::fenparser::fensettings::FENSetting4;
+    use crate::engine::game::Validatable;
 
     #[test]
     fn validate_dash() {

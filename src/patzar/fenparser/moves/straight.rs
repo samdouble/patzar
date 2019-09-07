@@ -1,3 +1,0 @@
-trait MovableStraight {
-    fn move();
-}

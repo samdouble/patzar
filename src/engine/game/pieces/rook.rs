@@ -1,14 +1,13 @@
-use std::cmp::PartialEq;
-use crate::patzar::fenparser::Square;
-use super::Color;
+use crate::engine::game::Color;
+use crate::engine::game::Square;
 
 #[derive(Debug)]
-pub struct King {
+pub struct Rook {
     color: Color,
     square: Square,
 }
 
-impl King {
+impl Rook {
     pub fn new(color: Color, square: Square) -> Self {
         Self {
             color,
@@ -17,7 +16,7 @@ impl King {
     }
 }
 
-impl PartialEq for King {
+impl PartialEq for Rook {
     fn eq(&self, other: &Self) -> bool {
         self.square == other.square
     }

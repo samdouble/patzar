@@ -14,14 +14,16 @@ impl Patzar {
     pub fn validate(fen_string: &str) -> bool {
         FENParser::validate(fen_string)
     }
+
+    pub fn get_available_moves(fen_string: &str) -> Vec<&str> {
+        Game::get_available_moves(fen_string)
+    }
 }
 
 /*
 TODO Tests
 
 FEN/EPD support
-GetInitialBoard() -> fenString
-Validate(fenString) -> bool
 GetAvailableMoves(fenString) -> list of Moves
 GetAvailableMoves(fenString, Square) -> list of Moves
 GetPossibleDestinations(fenString, Square) -> list of Squares

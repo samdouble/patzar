@@ -145,4 +145,6 @@ mod tests {
         };
         assert!(!valid);
     }
+
+    // TODO tests PartialEq
 }

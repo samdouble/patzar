@@ -15,9 +15,3 @@ impl Knight {
         }
     }
 }
-
-impl PartialEq for Knight {
-    fn eq(&self, other: &Self) -> bool {
-        self.square == other.square
-    }
-}

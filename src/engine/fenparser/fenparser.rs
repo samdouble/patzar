@@ -4,7 +4,7 @@ use crate::engine::fenparser::fensettings::FENSetting3;
 use crate::engine::fenparser::fensettings::FENSetting4;
 use crate::engine::fenparser::fensettings::FENSetting5;
 use crate::engine::fenparser::fensettings::FENSetting6;
-use crate::engine::game::Validatable;
+use crate::engine::fenparser::Validatable;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';
@@ -41,8 +41,8 @@ impl Validatable for FENParser {
 #[cfg(test)]
 mod tests {
     use crate::engine::fenparser::FENParser;
+    use crate::engine::fenparser::Validatable;
     use crate::engine::game::Game;
-    use crate::engine::game::Validatable;
 
     #[test]
     fn initial_configuration_is_valid() {

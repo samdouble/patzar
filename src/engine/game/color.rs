@@ -6,7 +6,7 @@ pub enum Color {
 
 #[cfg(test)]
 mod tests {
-    use super::Color;
+    use crate::engine::game::Color;
 
     #[test]
     fn eq_black() {

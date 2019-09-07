@@ -15,9 +15,3 @@ impl Rook {
         }
     }
 }
-
-impl PartialEq for Rook {
-    fn eq(&self, other: &Self) -> bool {
-        self.square == other.square
-    }
-}

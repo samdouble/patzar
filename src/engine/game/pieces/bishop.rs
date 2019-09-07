@@ -15,9 +15,3 @@ impl Bishop {
         }
     }
 }
-
-impl PartialEq for Bishop {
-    fn eq(&self, other: &Self) -> bool {
-        self.square == other.square
-    }
-}

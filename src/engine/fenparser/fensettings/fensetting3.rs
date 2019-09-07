@@ -1,4 +1,4 @@
-use crate::engine::game::Validatable;
+use crate::engine::fenparser::Validatable;
 
 const NO_POSSIBLE_CASTLING: char = '-';
 
@@ -25,7 +25,7 @@ impl Validatable for FENSetting3 {
 #[cfg(test)]
 mod tests {
     use crate::engine::fenparser::fensettings::FENSetting3;
-    use crate::engine::game::Validatable;
+    use crate::engine::fenparser::Validatable;
 
     #[test]
     fn validate_no_castling_options() {

@@ -1,4 +1,3 @@
-use std::cmp::PartialEq;
 use crate::engine::game::Color;
 use crate::engine::game::Square;
 
@@ -14,11 +13,5 @@ impl King {
             color,
             square,
         }
-    }
-}
-
-impl PartialEq for King {
-    fn eq(&self, other: &Self) -> bool {
-        self.square == other.square
     }
 }

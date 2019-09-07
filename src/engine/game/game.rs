@@ -20,7 +20,7 @@ impl Game {
 
 #[cfg(test)]
 mod tests {
-    use super::Game;
+    use crate::engine::game::Game;
 
     #[test]
     fn get_initial_configuration() {

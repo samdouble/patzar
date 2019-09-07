@@ -67,7 +67,7 @@ impl FENParsable<Self> for Board {
 
 #[cfg(test)]
 mod tests {
-    /*use super::Board;
+    /*use crate::engine::game::Board;
     
     #[test]
     fn initial_configuration_is_valid() {

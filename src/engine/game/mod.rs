@@ -11,5 +11,3 @@ pub use piece::Piece;
 pub mod pieces;
 mod square;
 pub use square::Square;
-mod validatable;
-pub use validatable::Validatable;

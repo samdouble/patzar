@@ -13,8 +13,9 @@ impl Patzar {
         FENParser::validate(fen_string)
     }
 
-    pub fn get_available_moves(fen_string: &str) -> Vec<&str> {
-        Game::get_available_moves(fen_string)
+    pub fn get_possible_moves(fen_string: &str) -> Vec<&str> {
+        let _moves = Game::get_possible_moves(fen_string);
+        Vec::new()
     }
 }
 /*

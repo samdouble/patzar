@@ -1,2 +1,6 @@
+mod movex;
+pub use movex::Move;
+mod movable;
+pub use movable::Movable;
 mod straight;
-use straight::MovableStraight;
+pub use straight::MovableStraight;

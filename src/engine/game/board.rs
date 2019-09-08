@@ -1,7 +1,9 @@
 use crate::engine::fenparser::FENParsable;
+use crate::engine::game::Color;
 use crate::engine::game::Piece;
 use crate::engine::game::Square;
-use crate::engine::game::Color;
+use crate::engine::game::moves::Movable;
+use crate::engine::game::moves::Move;
 use crate::engine::game::pieces::King;
 use crate::engine::game::pieces::Queen;
 use crate::engine::game::pieces::Rook;
@@ -13,11 +15,27 @@ const NUMBER_OF_ROWS: usize = 8;
 const NUMBER_OF_COLS: usize = 8;
 const ROWS_SEPARATOR: char = '/';
 
-pub type Board = Vec<Piece>;
+pub struct Board {
+    pieces: Vec<Piece>,
+}
+
+impl Board {
+    pub fn get_pieces(&self) -> &Vec<Piece> {
+        &self.pieces
+    }
+
+    pub fn get_possible_moves(self) -> Vec<Move> {
+        let mut moves = Vec::new();
+        for piece in self.get_pieces() {
+            moves.append(&mut { piece.get_possible_moves() });
+        }
+        moves
+    }
+}
 
 impl FENParsable<Self> for Board {
     fn from_FEN_string(fen_string: &str) -> Result<Self, ()> {
-        let mut vec_pieces: Self = Vec::new();
+        let mut pieces: Vec<Piece> = Vec::new();
         let mut row_number = 0;
         for row in fen_string.split(ROWS_SEPARATOR) {
             let squares: Vec<char> = row.chars().collect();
@@ -44,7 +62,7 @@ impl FENParsable<Self> for Board {
                         };
                         match piece {
                             Ok(piece) => {
-                                vec_pieces.push(piece);
+                                pieces.push(piece);
                                 col_number += 1;
                             },
                             Err(_err) => return Err(()),
@@ -61,7 +79,7 @@ impl FENParsable<Self> for Board {
         if row_number != NUMBER_OF_ROWS {
             return Err(());
         }
-        Ok(vec_pieces)
+        Ok(Self { pieces })
     }
 }
 

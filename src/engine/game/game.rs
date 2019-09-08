@@ -1,6 +1,6 @@
 use crate::engine::fenparser::FENParsable;
 use crate::engine::game::Board;
-use crate::engine::game::Move;
+use crate::engine::game::moves::Move;
 
 pub struct Game {}
 
@@ -9,12 +9,15 @@ impl Game {
         "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
     }
 
-    pub fn get_available_moves(fen_string: &str) -> Vec<&str> {
-        let board = match Board::from_FEN_string(fen_string) {
+    pub fn get_possible_moves(fen_string: &str) -> Vec<Move> {
+        /*let board = match Board::from_FEN_string(fen_string) {
             Ok(board) => board,
             Err(err) => panic!(err),
-        };
-        Vec::new()
+        };*/
+        let board = Board::from_FEN_string(fen_string)
+            .expect("TODO invalid board configuration");
+        let moves = board.get_possible_moves();
+        moves
     }
 }
 

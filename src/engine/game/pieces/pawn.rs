@@ -1,5 +1,7 @@
 use crate::engine::game::Color;
 use crate::engine::game::Square;
+use crate::engine::game::moves::Movable;
+use crate::engine::game::moves::Move;
 
 #[derive(Debug)]
 pub struct Pawn {
@@ -13,5 +15,12 @@ impl Pawn {
             color,
             square,
         }
+    }
+}
+
+impl Movable for Pawn {
+    fn get_possible_moves(&self) -> Vec<Move> {
+        let moves = Vec::new();
+        moves
     }
 }

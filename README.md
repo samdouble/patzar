@@ -6,8 +6,11 @@
 A chess library programmed in Rust
 
 ## Sources
-### Official Laws of Chess
+### The Official Laws of Chess
 https://www.fide.com/fide/handbook.html?id=171&view=article
 
 ### The Forsyth-Edwards Notation (FEN)
 https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+
+### The Algebraic Notation
+https://en.wikipedia.org/wiki/Algebraic_notation_(chess)

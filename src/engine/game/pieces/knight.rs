@@ -1,5 +1,7 @@
 use crate::engine::game::Color;
 use crate::engine::game::Square;
+use crate::engine::game::moves::Movable;
+use crate::engine::game::moves::Move;
 
 #[derive(Debug)]
 pub struct Knight {
@@ -13,5 +15,12 @@ impl Knight {
             color,
             square,
         }
+    }
+}
+
+impl Movable for Knight {
+    fn get_possible_moves(&self) -> Vec<Move> {
+        let moves = Vec::new();
+        moves
     }
 }

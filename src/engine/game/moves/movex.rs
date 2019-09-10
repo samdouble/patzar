@@ -1,6 +1,7 @@
 use crate::engine::game::Square;
 
-pub struct Move<'a> {
-    from: &'a Square,
-    to: &'a Square,
+#[derive(Copy, Clone)]
+pub struct Move {
+    from: Square,
+    to: Square,
 }

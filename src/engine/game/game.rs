@@ -10,14 +10,9 @@ impl Game {
     }
 
     pub fn get_possible_moves(fen_string: &str) -> Vec<Move> {
-        /*let board = match Board::from_FEN_string(fen_string) {
-            Ok(board) => board,
-            Err(err) => panic!(err),
-        };*/
         let board = Board::from_FEN_string(fen_string)
             .expect("TODO invalid board configuration");
-        let moves = board.get_possible_moves();
-        moves
+        board.get_possible_moves()
     }
 }
 

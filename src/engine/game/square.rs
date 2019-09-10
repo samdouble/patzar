@@ -2,7 +2,7 @@ use std::cmp::PartialEq;
 use regex::Regex;
 use crate::engine::fenparser::FENParsable;
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct Square {
     row: usize,
     col: usize,

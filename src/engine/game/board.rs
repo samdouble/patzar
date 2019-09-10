@@ -24,7 +24,7 @@ impl Board {
         &self.pieces
     }
 
-    pub fn get_possible_moves(self) -> Vec<Move> {
+    pub fn get_possible_moves(&self) -> Vec<Move> {
         let mut moves = Vec::new();
         for piece in self.get_pieces() {
             moves.append(&mut { piece.get_possible_moves() });

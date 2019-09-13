@@ -1,6 +1,7 @@
 use crate::engine::fenparser::FENParser;
 use crate::engine::fenparser::Validatable;
 use crate::engine::game::Game;
+use crate::engine::game::moves::Move;
 
 pub struct Patzar {}
 
@@ -13,9 +14,8 @@ impl Patzar {
         FENParser::validate(fen_string)
     }
 
-    pub fn get_possible_moves(fen_string: &str) -> Vec<&str> {
-        let _moves = Game::get_possible_moves(fen_string);
-        Vec::new()
+    pub fn get_possible_moves(fen_string: &str) -> Vec<Move> {
+        Game::get_possible_moves(fen_string)
     }
 }
 /*

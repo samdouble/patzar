@@ -1,5 +1,6 @@
 use std::cmp::PartialEq;
 use regex::Regex;
+use crate::engine::fenparser::errors::Error;
 use crate::engine::fenparser::FENParsable;
 
 #[derive(Debug, Copy, Clone)]
@@ -21,8 +22,8 @@ impl Square {
     }
 }
 
-impl FENParsable<Self> for Square {
-    fn from_FEN_string(fen_string: &str) -> Result<Self, ()> {
+impl FENParsable<Self, Error> for Square {
+    fn from_FEN_string(fen_string: &str) -> Result<Self, Error> {
         let square_regex: Regex = Regex::new(r"^[a-h][1-8]$").unwrap();
         match square_regex.is_match(fen_string) {
             true => {
@@ -42,7 +43,7 @@ impl FENParsable<Self> for Square {
                 };
                 Ok(Self::new(row_index, col_index))
             },
-            false => Err(()),
+            false => Err(Error::InvalidSquareRepresentation),
         }
     }
 }

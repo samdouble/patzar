@@ -10,9 +10,11 @@ impl Game {
     }
 
     pub fn get_possible_moves(fen_string: &str) -> Vec<Move> {
-        let board = Board::from_FEN_string(fen_string)
-            .expect("TODO invalid board configuration");
-        board.get_possible_moves()
+        println!("{:#?}", Board::from_FEN_string(fen_string));
+
+         Board::from_FEN_string(fen_string)
+            .expect("TODO invalid board configuration")
+            .get_possible_moves()
     }
 }
 
@@ -26,5 +28,9 @@ mod tests {
         assert_eq!(initial_configuration, "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
     }
 
-    // TODO tests get_available_moves
+    #[test]
+    fn get_possible_moves_with_initial_configuration() {
+        let moves = Game::get_possible_moves("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        assert_eq!(moves, Vec::new());
+    }
 }

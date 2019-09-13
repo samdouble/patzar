@@ -1,3 +1,4 @@
+use crate::engine::fenparser::errors::Error;
 use crate::engine::fenparser::FENParsable;
 use crate::engine::game::Color;
 use crate::engine::game::Piece;
@@ -15,6 +16,7 @@ const NUMBER_OF_ROWS: usize = 8;
 const NUMBER_OF_COLS: usize = 8;
 const ROWS_SEPARATOR: char = '/';
 
+#[derive(Debug)]
 pub struct Board {
     pieces: Vec<Piece>,
 }
@@ -33,8 +35,8 @@ impl Board {
     }
 }
 
-impl FENParsable<Self> for Board {
-    fn from_FEN_string(fen_string: &str) -> Result<Self, ()> {
+impl FENParsable<Self, Error> for Board {
+    fn from_FEN_string(fen_string: &str) -> Result<Self, Error> {
         let mut pieces: Vec<Piece> = Vec::new();
         let mut row_number = 0;
         for row in fen_string.split(ROWS_SEPARATOR) {
@@ -58,26 +60,26 @@ impl FENParsable<Self> for Board {
                             'n' => Ok(Piece::Knight(Knight::new(Color::Black, position))),
                             'P' => Ok(Piece::Pawn(Pawn::new(Color::White, position))),
                             'p' => Ok(Piece::Pawn(Pawn::new(Color::Black, position))),
-                            _ => Err(()),
+                            _ => Err(Error::InvalidPiece),
                         };
                         match piece {
                             Ok(piece) => {
                                 pieces.push(piece);
                                 col_number += 1;
                             },
-                            Err(_err) => return Err(()),
+                            Err(_err) => return Err(Error::InvalidPiece),
                         }
                     },
                 }
             };
             if col_number != NUMBER_OF_COLS {
-                return Err(());
+                return Err(Error::WrongNumberOfCols);
             }
             // TODO more conditions ...
             row_number += 1;
         };
         if row_number != NUMBER_OF_ROWS {
-            return Err(());
+            return Err(Error::WrongNumberOfRows);
         }
         Ok(Self { pieces })
     }

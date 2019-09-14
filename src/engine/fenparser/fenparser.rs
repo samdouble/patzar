@@ -42,11 +42,11 @@ impl Validatable for FENParser {
 mod tests {
     use crate::engine::fenparser::FENParser;
     use crate::engine::fenparser::Validatable;
-    use crate::engine::game::Game;
+    use crate::engine::game::Board;
 
     #[test]
     fn initial_configuration_is_valid() {
-        let initial_configuration: &'static str = Game::get_initial_configuration();
+        let initial_configuration: &'static str = Board::get_initial_configuration();
         assert!(FENParser::validate(initial_configuration));
     }
 

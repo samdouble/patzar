@@ -22,13 +22,20 @@ pub struct Board {
 }
 
 impl Board {
+    pub fn get_initial_configuration() -> &'static str {
+        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    }
+
     pub fn get_pieces(&self) -> &Vec<Piece> {
         &self.pieces
     }
 
-    pub fn get_possible_moves(&self) -> Vec<Move> {
+    pub fn get_possible_moves(fen_string: &str) -> Vec<Move> {
+        let board = Board::from_FEN_string(fen_string)
+            .expect("TODO invalid board configuration");
+
         let mut moves = Vec::new();
-        for piece in self.get_pieces() {
+        for piece in board.get_pieces() {
             moves.append(&mut { piece.get_possible_moves() });
         }
         moves
@@ -87,7 +94,21 @@ impl FENParsable<Self, Error> for Board {
 
 #[cfg(test)]
 mod tests {
-    /*use crate::engine::game::Board;
+    use crate::engine::game::Board;
+
+    #[test]
+    fn get_initial_configuration() {
+        let initial_configuration: &'static str = Board::get_initial_configuration();
+        assert_eq!(initial_configuration, "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    }
+
+    #[test]
+    fn get_possible_moves_with_initial_configuration() {
+        let moves = Board::get_possible_moves("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        assert_eq!(moves, Vec::new());
+    }
+
+    /*
     
     #[test]
     fn initial_configuration_is_valid() {

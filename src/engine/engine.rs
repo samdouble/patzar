@@ -1,13 +1,13 @@
 use crate::engine::fenparser::FENParser;
 use crate::engine::fenparser::Validatable;
-use crate::engine::game::Game;
+use crate::engine::game::Board;
 use crate::engine::game::moves::Move;
 
 pub struct Patzar {}
 
 impl Patzar {
     pub fn get_initial_configuration() -> &'static str {
-        Game::get_initial_configuration()
+        Board::get_initial_configuration()
     }
 
     pub fn validate(fen_string: &str) -> bool {
@@ -15,7 +15,7 @@ impl Patzar {
     }
 
     pub fn get_possible_moves(fen_string: &str) -> Vec<Move> {
-        Game::get_possible_moves(fen_string)
+        Board::get_possible_moves(fen_string)
     }
 }
 /*

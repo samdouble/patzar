@@ -1,5 +1,3 @@
-mod game;
-pub use game::Game;
 mod color;
 pub use color::Color;
 mod board;

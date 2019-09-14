@@ -1,6 +1,5 @@
 mod engine;
 pub use engine::Patzar;
-mod game;
-pub use game::Game;
+pub mod game;
 mod fenparser;
 pub use fenparser::FENParser;

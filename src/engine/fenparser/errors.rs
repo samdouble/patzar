@@ -6,7 +6,7 @@ pub enum Error {
     WrongNumberOfCols,
     WrongNumberOfRows,
     // Setting2
-    //InvalidNextPlayerSetting,
+    InvalidNextPlayerSetting,
 
     InvalidSquareRepresentation,
 }

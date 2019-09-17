@@ -1,16 +1,13 @@
-use crate::engine::fenparser::FENParsable;
 use crate::engine::fenparser::Validatable;
-use crate::engine::game::Board;
+
+const ROWS_SEPARATOR: char = '/';
 
 pub struct FENSetting1 {}
 
 // First setting: position of every piece on the board
 impl Validatable for FENSetting1 {
     fn validate(setting: &str) -> bool {
-        match Board::from_FEN_string(setting) {
-            Ok(_board) => true,
-            Err(_err) => false,
-        }
+        true
     }
 }
 

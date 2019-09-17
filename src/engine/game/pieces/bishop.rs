@@ -3,7 +3,7 @@ use crate::engine::game::Square;
 use crate::engine::game::moves::Movable;
 use crate::engine::game::moves::Move;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Bishop {
     color: Color,
     square: Square,

@@ -1,5 +1,7 @@
 mod fenparser;
 pub use fenparser::FENParser;
+mod boardbuilder;
+pub use boardbuilder::BoardBuilder;
 pub mod errors;
 mod fenparsable;
 pub use fenparsable::FENParsable;

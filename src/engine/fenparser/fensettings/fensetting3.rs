@@ -1,27 +1,38 @@
 use crate::engine::fenparser::Validatable;
+use crate::engine::fenparser::errors::Error;
+use crate::engine::game::CastlingOption;
+use crate::engine::game::Color;
 
 const NO_POSSIBLE_CASTLING: char = '-';
 
 pub struct FENSetting3 {}
 
 // Third setting: castling options
-impl Validatable for FENSetting3 {
-    fn validate(setting: &str) -> bool {
+impl Validatable<Option<Vec<CastlingOption>>, Error> for FENSetting3 {
+    fn validate(setting: &str) -> Result<Option<Vec<CastlingOption>>, Error> {
         if setting == NO_POSSIBLE_CASTLING.to_string() {
-            return true;
+            return Ok(None);
         }
-        let mut options = vec!['K', 'Q', 'k', 'q'];
+        let mut options = Vec::new();
         let castling_options: Vec<char> = setting.chars().collect();
         for castling_option in castling_options {
-            if !options.contains(&castling_option) {
-                return false;
+            let option = match castling_option {
+                'K' => CastlingOption::KingSide(Color::White),
+                'Q' => CastlingOption::QueenSide(Color::White),
+                'k' => CastlingOption::KingSide(Color::Black),
+                'q' => CastlingOption::QueenSide(Color::Black),
+                _ => return Err(Error::InvalidCastlingOptionSetting),
+            };
+            if !options.contains(&option) {
+                options.push(option);
+            } else {
+                return Err(Error::CastlingOptionSpecifiedTwice);
             }
-            options.retain(|&x| x != castling_option);
         }
-        true
+        Ok(Some(options))
     }
 }
-
+/*
 #[cfg(test)]
 mod tests {
     use crate::engine::fenparser::fensettings::FENSetting3;
@@ -69,4 +80,4 @@ mod tests {
         let valid = FENSetting3::validate("qKkQKq");
         assert!(!valid);
     }
-}
+}*/

@@ -53,9 +53,13 @@ impl FENParsable<Self, Error> for Board {
         let setting4 = settings.nth(3).expect("TODO");
         let setting5 = settings.nth(4).expect("TODO");
         let setting6 = settings.nth(5).expect("TODO");
-        let mut board = BoardBuilder::new()
+        let board = BoardBuilder::new()
             .set_configuration(setting1).unwrap()
             .set_next_color_to_play(setting2).unwrap()
+            .set_castling_options(setting3).unwrap()
+            .set_en_passant_target(setting4).unwrap()
+            .set_half_moves_counter(setting5).unwrap()
+            .set_nb_full_moves(setting6).unwrap()
             .build();
         Ok(board)
     }
@@ -83,6 +87,12 @@ mod tests {
     fn initial_configuration_is_valid() {
         let valid = Board::from_FEN_string("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
         assert!(valid);
+    }
+
+    #[test]
+    fn initial_configuration_is_valid() {
+        let initial_configuration: &'static str = Board::get_initial_configuration();
+        assert!(FENParser::validate(initial_configuration));
     }
 
     // TODO more tests*/

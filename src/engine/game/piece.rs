@@ -7,7 +7,7 @@ use crate::engine::game::pieces::Bishop;
 use crate::engine::game::pieces::Knight;
 use crate::engine::game::pieces::Pawn;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Copy, Clone)]
 pub enum Piece {
     King(King),
     Queen(Queen),

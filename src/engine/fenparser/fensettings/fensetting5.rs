@@ -1,13 +1,14 @@
 use crate::engine::fenparser::Validatable;
+use crate::engine::fenparser::errors::Error;
 
 pub struct FENSetting5 {}
 
 // Fifth setting: half-move counter
-impl Validatable for FENSetting5 {
-    fn validate(setting: &str) -> bool {
-        match setting.parse::<u32>() {
-            Ok(_num_moves) => true,
-            Err(_e) => false, 
+impl Validatable<u8, Error> for FENSetting5 {
+    fn validate(setting: &str) -> Result<u8, Error> {
+        match setting.parse::<u8>() {
+            Ok(num_moves) => Ok(num_moves),
+            Err(_e) => Err(Error::InvalidHalfMovesSetting), 
         }
     }
 }
@@ -19,31 +20,51 @@ mod tests {
 
     #[test]
     fn validate_1() {
-        let valid = FENSetting5::validate("1");
+        let nb_half_moves = FENSetting5::validate("1");
+        let valid = match nb_half_moves {
+            Ok(_nb_half_moves) => true,
+            Err(_err) => false,
+        };
         assert!(valid);
     }
 
     #[test]
     fn validate_30() {
-        let valid = FENSetting5::validate("30");
+        let nb_half_moves = FENSetting5::validate("30");
+        let valid = match nb_half_moves {
+            Ok(_nb_half_moves) => true,
+            Err(_err) => false,
+        };
         assert!(valid);
     }
 
     #[test]
     fn validate_0() {
-        let valid = FENSetting5::validate("0");
+        let nb_half_moves = FENSetting5::validate("0");
+        let valid = match nb_half_moves {
+            Ok(_nb_half_moves) => true,
+            Err(_err) => false,
+        };
         assert!(valid);
     }
 
     #[test]
     fn invalidate_negative() {
-        let valid = FENSetting5::validate("-1");
+        let nb_half_moves = FENSetting5::validate("-1");
+        let valid = match nb_half_moves {
+            Ok(_nb_half_moves) => true,
+            Err(_err) => false,
+        };
         assert!(!valid);
     }
 
     #[test]
     fn invalidate_decimal() {
-        let valid = FENSetting5::validate("2.0");
+        let nb_half_moves = FENSetting5::validate("2.0");
+        let valid = match nb_half_moves {
+            Ok(_nb_half_moves) => true,
+            Err(_err) => false,
+        };
         assert!(!valid);
     }
 }

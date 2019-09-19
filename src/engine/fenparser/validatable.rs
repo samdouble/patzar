@@ -1,3 +1,3 @@
-pub trait Validatable {
-    fn validate(fen_string: &str) -> bool;
+pub trait Validatable<T, E> {
+    fn validate(fen_string: &str) -> Result<T, E>;
 }

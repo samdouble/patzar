@@ -1,3 +1,5 @@
+mod castlingoption;
+pub use castlingoption::CastlingOption;
 mod color;
 pub use color::Color;
 mod board;

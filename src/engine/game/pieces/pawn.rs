@@ -3,7 +3,7 @@ use crate::engine::game::Square;
 use crate::engine::game::moves::Movable;
 use crate::engine::game::moves::Move;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Copy, Clone)]
 pub struct Pawn {
     color: Color,
     square: Square,

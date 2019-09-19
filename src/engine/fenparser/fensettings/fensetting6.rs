@@ -1,13 +1,20 @@
 use crate::engine::fenparser::Validatable;
+use crate::engine::fenparser::errors::Error;
 
 pub struct FENSetting6 {}
 
 // Sixth setting: number of full moves
-impl Validatable for FENSetting6 {
-    fn validate(setting: &str) -> bool {
-        match setting.parse::<u32>() {
-            Ok(num_moves) => num_moves >= 1,
-            Err(_e) => false, 
+impl Validatable<u8, Error> for FENSetting6 {
+    fn validate(setting: &str) -> Result<u8, Error> {
+        match setting.parse::<u8>() {
+            Ok(num_moves) => {
+                if num_moves >= 1 {
+                    Ok(num_moves)
+                } else {
+                    Err(Error::InvalidFullMovesSetting)
+                }
+            },
+            Err(_e) => Err(Error::InvalidFullMovesSetting), 
         }
     }
 }
@@ -19,31 +26,51 @@ mod tests {
 
     #[test]
     fn validate_1() {
-        let valid = FENSetting6::validate("1");
+        let nb_full_moves = FENSetting6::validate("1");
+        let valid = match nb_full_moves {
+            Ok(_nb_full_moves) => true,
+            Err(_err) => false,
+        };
         assert!(valid);
     }
 
     #[test]
     fn validate_30() {
-        let valid = FENSetting6::validate("30");
+        let nb_full_moves = FENSetting6::validate("30");
+        let valid = match nb_full_moves {
+            Ok(_nb_full_moves) => true,
+            Err(_err) => false,
+        };
         assert!(valid);
     }
 
     #[test]
     fn invalidate_0() {
-        let valid = FENSetting6::validate("0");
+        let nb_full_moves = FENSetting6::validate("0");
+        let valid = match nb_full_moves {
+            Ok(_nb_full_moves) => true,
+            Err(_err) => false,
+        };
         assert!(!valid);
     }
 
     #[test]
     fn invalidate_negative() {
-        let valid = FENSetting6::validate("-1");
+        let nb_full_moves = FENSetting6::validate("-1");
+        let valid = match nb_full_moves {
+            Ok(_nb_full_moves) => true,
+            Err(_err) => false,
+        };
         assert!(!valid);
     }
 
     #[test]
     fn invalidate_decimal() {
-        let valid = FENSetting6::validate("2.0");
+        let nb_full_moves = FENSetting6::validate("2.0");
+        let valid = match nb_full_moves {
+            Ok(_nb_full_moves) => true,
+            Err(_err) => false,
+        };
         assert!(!valid);
     }
 }

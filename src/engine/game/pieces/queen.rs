@@ -4,7 +4,7 @@ use crate::engine::game::moves::Movable;
 use crate::engine::game::moves::MovableStraight;
 use crate::engine::game::moves::Move;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Copy, Clone)]
 pub struct Queen {
     color: Color,
     square: Square,

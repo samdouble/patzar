@@ -7,7 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build
+          name: Build and test
           command: |
-            cargo build
-            cargo test
+            export CARGO_MAKE_RUN_CODECOV=true
+            cargo install --debug cargo-make
+            cargo make ci-flow

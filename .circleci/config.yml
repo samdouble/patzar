@@ -10,5 +10,4 @@ jobs:
           name: Build and test
           command: |
             cargo build
-            cargo install cargo-tarpaulin
-            cargo tarpaulin -v --fail-under 85
+            cargo test

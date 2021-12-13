@@ -9,6 +9,5 @@ jobs:
       - run:
           name: Build and test
           command: |
-            export CARGO_MAKE_RUN_CODECOV=true
-            cargo install --debug cargo-make
-            cargo make ci-flow
+            cargo build
+            cargo tarpaulin -v --fail-under 85

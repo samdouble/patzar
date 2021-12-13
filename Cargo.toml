@@ -7,6 +7,3 @@ edition = "2018"
 [dependencies]
 lazy_static = "1.4.0"
 regex = "1"
-
-[dev-dependencies]
-cargo-tarpaulin = "0.18.0-alpha2"

@@ -1,4 +1,4 @@
-use crate::engine::fenparser::Validatable;
+use crate::engine::fenparsing::Validatable;
 
 pub struct FENSetting6 {}
 
@@ -14,8 +14,8 @@ impl Validatable for FENSetting6 {
 
 #[cfg(test)]
 mod tests {
-    use crate::engine::fenparser::fensettings::FENSetting6;
-    use crate::engine::fenparser::Validatable;
+    use crate::engine::fenparsing::fensettings::FENSetting6;
+    use crate::engine::fenparsing::Validatable;
 
     #[test]
     fn validate_1() {

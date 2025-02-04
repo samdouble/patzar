@@ -1,4 +1,4 @@
-use crate::engine::fenparser::FENParsable;
+use crate::engine::fenparsing::FENParsable;
 use crate::engine::game::Board;
 
 pub struct Game {}
@@ -9,7 +9,7 @@ impl Game {
     }
 
     pub fn get_available_moves(fen_string: &str) -> Vec<&str> {
-        let board = match Board::from_FEN_string(fen_string) {
+        let board = match Board::from_fen_string(fen_string) {
             Ok(board) => board,
             Err(err) => panic!(err),
         };

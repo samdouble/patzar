@@ -1,4 +1,4 @@
-use crate::engine::fenparser::Validatable;
+use crate::engine::fenparsing::Validatable;
 
 pub struct FENSetting2 {}
 
@@ -11,8 +11,8 @@ impl Validatable for FENSetting2 {
 
 #[cfg(test)]
 mod tests {
-    use crate::engine::fenparser::fensettings::FENSetting2;
-    use crate::engine::fenparser::Validatable;
+    use crate::engine::fenparsing::fensettings::FENSetting2;
+    use crate::engine::fenparsing::Validatable;
 
     #[test]
     fn validate_white() {

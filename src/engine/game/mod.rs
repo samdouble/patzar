@@ -5,7 +5,6 @@ pub use color::Color;
 mod board;
 pub use board::Board;
 mod movex;
-pub use movex::Move;
 mod piece;
 pub use piece::Piece;
 pub mod pieces;

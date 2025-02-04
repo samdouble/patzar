@@ -1,4 +1,4 @@
-use crate::engine::fenparser::FENParsable;
+use crate::engine::fenparsing::FENParsable;
 use crate::engine::game::Piece;
 use crate::engine::game::Square;
 use crate::engine::game::Color;
@@ -16,7 +16,7 @@ const ROWS_SEPARATOR: char = '/';
 pub type Board = Vec<Piece>;
 
 impl FENParsable<Self> for Board {
-    fn from_FEN_string(fen_string: &str) -> Result<Self, ()> {
+    fn from_fen_string(fen_string: &str) -> Result<Self, ()> {
         let mut vec_pieces: Self = Vec::new();
         let mut row_number = 0;
         for row in fen_string.split(ROWS_SEPARATOR) {
@@ -71,7 +71,7 @@ mod tests {
     
     #[test]
     fn initial_configuration_is_valid() {
-        let valid = Board::from_FEN_string("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+        let valid = Board::from_fen_string("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
         assert!(valid);
     }
 

@@ -1,5 +1,5 @@
-use crate::engine::fenparser::FENParser;
-use crate::engine::fenparser::Validatable;
+use crate::engine::fenparsing::FENParser;
+use crate::engine::fenparsing::Validatable;
 use crate::engine::game::Game;
 
 pub struct Patzar {}

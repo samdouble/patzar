@@ -1,10 +1,10 @@
-use crate::engine::fenparser::fensettings::FENSetting1;
-use crate::engine::fenparser::fensettings::FENSetting2;
-use crate::engine::fenparser::fensettings::FENSetting3;
-use crate::engine::fenparser::fensettings::FENSetting4;
-use crate::engine::fenparser::fensettings::FENSetting5;
-use crate::engine::fenparser::fensettings::FENSetting6;
-use crate::engine::fenparser::Validatable;
+use crate::engine::fenparsing::fensettings::FENSetting1;
+use crate::engine::fenparsing::fensettings::FENSetting2;
+use crate::engine::fenparsing::fensettings::FENSetting3;
+use crate::engine::fenparsing::fensettings::FENSetting4;
+use crate::engine::fenparsing::fensettings::FENSetting5;
+use crate::engine::fenparsing::fensettings::FENSetting6;
+use crate::engine::fenparsing::Validatable;
 
 const NUMBER_OF_SETTINGS: u8 = 6;
 const SETTINGS_SEPARATOR: char = ' ';
@@ -40,8 +40,8 @@ impl Validatable for FENParser {
 
 #[cfg(test)]
 mod tests {
-    use crate::engine::fenparser::FENParser;
-    use crate::engine::fenparser::Validatable;
+    use crate::engine::fenparsing::FENParser;
+    use crate::engine::fenparsing::Validatable;
     use crate::engine::game::Game;
 
     #[test]

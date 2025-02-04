@@ -1,4 +1,3 @@
-use std::cmp::PartialEq;
 use crate::engine::game::pieces::King;
 use crate::engine::game::pieces::Queen;
 use crate::engine::game::pieces::Rook;

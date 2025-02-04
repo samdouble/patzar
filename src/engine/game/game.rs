@@ -1,6 +1,5 @@
 use crate::engine::fenparser::FENParsable;
 use crate::engine::game::Board;
-use crate::engine::game::Move;
 
 pub struct Game {}
 
